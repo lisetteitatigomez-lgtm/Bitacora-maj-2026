@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#7b1e1e">
+<title>Bitácora MAJ 2026</title>
+<style>
+body{font-family:system-ui,-apple-system,sans-serif;margin:0;background:#f7f3ee;color:#252525}
+header{background:#7b1e1e;color:white;padding:22px 18px;text-align:center}
+main{max-width:760px;margin:auto;padding:16px}
+.card{background:white;border-radius:16px;padding:18px;margin:12px 0;box-shadow:0 2px 10px #0001}
+h1,h2{margin-top:0}.grid{display:grid;gap:10px}
+label{font-weight:600;display:block;margin-top:10px}
+input,textarea,select{box-sizing:border-box;width:100%;padding:11px;border:1px solid #ccc;border-radius:10px;font-size:16px}
+textarea{min-height:100px;resize:vertical}
+button{border:0;border-radius:12px;padding:12px 16px;font-size:16px;margin:5px 4px 0 0;background:#7b1e1e;color:white}
+button.alt{background:#555}
+details{border-top:1px solid #ddd;padding:12px 0} summary{font-weight:700;cursor:pointer}
+.small{font-size:13px;color:#666}.ok{color:#176b36;font-weight:600}
+</style>
+</head>
+<body>
+<header><h1>Bitácora MAJ 2026</h1><div>Herramienta del misionero · funciona sin internet</div></header>
+<main>
+<div class="card">
+<h2>📝 Mi bitácora</h2>
+<p class="small">Los datos se guardan en este teléfono. No necesitan internet.</p>
+<label>Nombre del misionero</label><input id="nombre">
+<label>Fecha</label><input id="fecha" type="date">
+<label>Patrulla / grupo</label><input id="grupo">
+<label>Lugar / establecimiento</label><input id="lugar">
+<label>Familias / casas visitadas</label><input id="casas" type="number" min="0">
+<label>Personas encontradas</label><input id="personas" type="number" min="0">
+<label>¿Qué vivimos en la misión?</label><textarea id="vivimos"></textarea>
+<label>¿Qué escuchamos de las personas/familias?</label><textarea id="escuchamos"></textarea>
+<label>Mensaje de fe / cita bíblica compartida</label><textarea id="mensaje"></textarea>
+<label>Intenciones y necesidades para rezar</label><textarea id="intenciones"></textarea>
+<label>Gestos misioneros realizados</label><textarea id="gestos"></textarea>
+<label>Avisos o información para las familias</label><textarea id="avisos"></textarea>
+<label>Reflexión personal / frutos de la misión</label><textarea id="reflexion"></textarea>
+<button onclick="guardar()">💾 Guardar</button>
+<button class="alt" onclick="exportar()">📄 Exportar</button>
+<button class="alt" onclick="limpiar()">Limpiar</button>
+<p id="estado" class="small"></p>
+</div>
+
+<div class="card">
+<h2>📖 Herramientas del misionero</h2>
+<details><summary>¿Qué es ser misionero y cuál es mi objetivo?</summary>
+<p>Un misionero es especialmente llamado por Dios; sale de su zona de confort, sale al encuentro con el otro e irradia la alegría del Evangelio en la vida diaria. Ser misionero es una labor abierta a todos los bautizados. El objetivo es ser instrumento de Dios para encontrarse y encontrarnos con Él.</p></details>
+<details><summary>Escuchar es la clave</summary><p>El encuentro con el otro se basa en la escucha y la compañía. Aprendamos a escuchar con el corazón, siendo pacientes, amables y educados.</p></details>
+<details><summary>Etapas de mi encuentro con el otro</summary>
+<p><b>Espíritu Santo:</b> invocar al Espíritu Santo en el camino a la misión.</p>
+<p><b>Saludo y presentación:</b> un saludo cordial y una presentación adecuada ayudan a generar confianza.</p>
+<p><b>Conocerse:</b> conocer a la persona/familia crea una base sólida para una relación significativa.</p>
+<p><b>Compartir:</b> compartir tiempo y experiencias de manera bidireccional ayuda a establecer confianza.</p>
+<p><b>Escuchar:</b> escuchar con el corazón transmite amor y compasión.</p>
+<p><b>Mensajes, consejos, citas bíblicas, rezar y gestos misioneros:</b> compartir un mensaje de fe, esperanza y amor y poder rezar juntos.</p>
+<p><b>Avisos:</b> dejar información sobre misas, talleres y otras actividades.</p>
+<p><b>Despedida:</b> agradecer por abrir las puertas del hogar y de sus vidas.</p>
+</details>
+<details><summary>Oración al Espíritu Santo</summary><p>Oh Espíritu Santo, amor del Padre y del Hijo, inspírame siempre lo que debo pensar, lo que debo decir, cómo debo decirlo, lo que debo callar, cómo debo actuar, lo que debo hacer para Gloria de Dios, bien de las almas y mi propia santificación. Amén.</p></details>
+<details><summary>Oración de entrega después de cada misión</summary><p>Señor Jesús, gracias por habernos permitido llevar tu Palabra a quienes hemos visitado. Ponemos en tus manos sus peticiones y necesidades, para que tu amor transforme sus vidas. Bendice a cada misionero y fortalécenos en la fe. Que María, nuestra Madre, nos siga acompañando y guiando con su amor. Amén.</p></details>
+<details><summary>Oraciones para distintas situaciones en las casas</summary>
+<p><b>Por la bendición familiar:</b> oración para pedir que Jesús bendiga a la familia, reine la paz, el amor y la alegría.</p>
+<p><b>Oración de agradecimiento:</b> dar gracias por la vida de cada integrante y pedir que la familia permanezca unida en el amor.</p>
+<p><b>Familia donde hay un enfermo:</b> oración por la comprensión, paciencia, alivio y salud del enfermo.</p>
+<p><b>Familia afligida por una desgracia:</b> oración por fe, esperanza y consuelo.</p>
+<p><b>Personas que se encuentran solas:</b> oración para que ninguno se sienta solo o abandonado.</p>
+<p><b>Familia donde se necesita trabajo:</b> oración para conseguir un trabajo honesto, digno y estable.</p>
+<p><b>Familia no católica:</b> oración de respeto, paz y acompañamiento.</p>
+</details>
+<details><summary>Rosario misionero</summary>
+<p>Oración mariana universal y misionera que pide por las intenciones y necesidades de todo el mundo, teniendo presentes los cinco continentes.</p>
+<ul><li>África — verde</li><li>América — rojo</li><li>Europa — blanco</li><li>Oceanía — azul</li><li>Asia — amarillo</li></ul>
+</details>
+<details><summary>Tips del misionero</summary>
+<p>Mientras llegas a destino, mantené la alegría y el foco en la misión. Si te cierran las puertas, que no sea motivo de desgano sino una oportunidad de oración. Después de la misión, compartí y retroalimentate con el grupo sobre los frutos de la misión.</p>
+</details>
+</div>
+</main>
+<script>
+const ids=["nombre","fecha","grupo","lugar","casas","personas","vivimos","escuchamos","mensaje","intenciones","gestos","avisos","reflexion"];
+function guardar(){let d={};ids.forEach(i=>d[i]=document.getElementById(i).value);localStorage.setItem("bitacoraMAJ2026",JSON.stringify(d));estado("✓ Guardado en este teléfono, sin internet.");}
+function cargar(){let d=JSON.parse(localStorage.getItem("bitacoraMAJ2026")||"{}");ids.forEach(i=>document.getElementById(i).value=d[i]||"");}
+function estado(t){document.getElementById("estado").textContent=t;}
+function limpiar(){if(confirm("¿Borrar los datos guardados de esta bitácora?")){localStorage.removeItem("bitacoraMAJ2026");ids.forEach(i=>document.getElementById(i).value="");estado("Datos borrados.");}}
+function exportar(){let d={};ids.forEach(i=>d[i]=document.getElementById(i).value);let txt="BITÁCORA MAJ 2026\n\n"+Object.entries(d).map(([k,v])=>k.toUpperCase()+":\n"+v).join("\n\n");let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([txt],{type:"text/plain"}));a.download="bitacora-MAJ-2026.txt";a.click();}
+cargar();
+if(!localStorage.getItem("bitacoraMAJ2026"))document.getElementById("fecha").value=new Date().toISOString().slice(0,10);
+</script>
+</body></html>
